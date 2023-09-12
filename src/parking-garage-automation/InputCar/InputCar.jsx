@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import styles from "./inputCar.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { checkInCarThunk } from "../../services/inputCarThunk";
 import { Button, Modal } from "react-bootstrap";
 import MessengerCustomerChat from "react-messenger-customer-chat";
+import {useNavigate} from "react-router";
 
 export const InputCar = (props) => {
-  const { responseMsg } = useSelector(
-    (state) => state.checkInCars
-  );
+  const navigate = useNavigate()
+  // const { responseMsg } = useSelector(
+  //   (state) => state.checkInCars
+  // );
   const [contact, setContact] = useState("");
   const dispatch = useDispatch();
   const [isMouseOver, setMouseOver] = useState(false);
@@ -21,16 +23,17 @@ export const InputCar = (props) => {
       plate: contact,
       carType: "Car"
     };
-    console.log(content);
+    //console.log(content);
 
     await dispatch(checkInCarThunk(content)).then((req) => {
       if (req.payload.content.Entrance === "false") {
-        window.location.replace(`/information/${contact}`);
+        //window.location.replace(`/information/${contact}`);
+        navigate(`/information/${contact}`)
       } else {
         setShow(true);
       }
-      console.log(responseMsg);
-      console.log(req.payload.content.Entrance);
+      //console.log(responseMsg);
+      //console.log(req.payload.content.Entrance);
     });
 
 
@@ -51,12 +54,13 @@ export const InputCar = (props) => {
     };
     dispatch(checkInCarThunk(content)).then((req) => {
       if (req.payload.content.Entrance === "false") {
-        window.location.replace(`/information/${contact}`);
+        //window.location.replace(`/information/${contact}`);
+        navigate(`/information/${contact}`)
       } else {
         setShow(true);
       }
-      console.log(responseMsg);
-      console.log(req.payload.content.Entrance);
+      //console.log(responseMsg);
+      //console.log(req.payload.content.Entrance);
     });
     // dispatch(showBicycleUserThunk()).then((req) =>{
     //   console.log(req);
