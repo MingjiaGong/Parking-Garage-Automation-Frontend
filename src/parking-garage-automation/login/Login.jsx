@@ -10,8 +10,6 @@ import { useNavigate } from "react-router";
 
 export const Login = () => {
   const dispatch = useDispatch();
-  const { load, token, users } = useSelector((state) => state.users);
-  //console.log(users);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,39 +17,6 @@ export const Login = () => {
   const [showWarning, setShowWarning] = useState(false); // New state variable
   const [formSubmitted, setFormSubmitted] = useState(false); // New state variable
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    setFormSubmitted(true); // Update the state variable
-    // Check if the input fields are empty
-    if (username === "" || password === "") {
-      setShowWarning(true);
-      return;
-    }
-
-    await dispatch(loginThunk({ username, password })).then((req) => {
-      //console.log(req.type);
-      //console.log(req);
-      if (req.type === "/login/rejected") {
-        setShow(true);
-        //console.log("123456");
-      }
-      // console.log(req.payload.token);
-
-      const decoded = jwtDecode(req.payload.token);
-      //console.log(decoded);
-      //console.log(decoded.role);
-      if (decoded.role === 1 || decoded.role === 2) {
-        //window.location.replace(`/modules`);
-        navManagementSystem()
-      } else if (decoded.role === 3) {
-        //window.location.replace(`/usermodule`);
-        navUsermodule()
-      }
-    });
-    //console.log(token);
-    //console.log(load);
-  };
   const handleClose = () => setShow(false);
   const navigate = useNavigate();
 
@@ -66,6 +31,33 @@ export const Login = () => {
   const navManagementSystem = ()=>{
     navigate('/modules');
   }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    setFormSubmitted(true); // Update the state variable
+    // Check if the input fields are empty
+    if (username === "" || password === "") {
+      setShowWarning(true);
+      return;
+    }
+
+    await dispatch(loginThunk({ username, password })).then((req) => {
+      if (req.type === "/login/rejected") {
+        setShow(true);
+      }
+
+      const decoded = jwtDecode(req.payload.token);
+
+      if (decoded.role === 1 || decoded.role === 2) {
+        navManagementSystem()
+      } else if (decoded.role === 3) {
+        navUsermodule()
+      }
+    });
+
+  };
+
 
   return (
     <>
