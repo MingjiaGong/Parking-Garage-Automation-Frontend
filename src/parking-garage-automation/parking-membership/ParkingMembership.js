@@ -8,12 +8,14 @@ import Posts from "./Item";
 
 
 
+
 const ParkingMembership = ({setData}) => {
     const {
         historyAll,
     } = useSelector((state) => state.parkMembership)
     //console.log(historyAll)
-    const { users } = useSelector((state) => state.users);
+    //const { users } = useSelector((state) => state.users);
+    let users = localStorage.getItem('userObject') != null? JSON.parse(localStorage.getItem('userObject')):[]
 
     const [price, setPrice] = useState(0);
     const [memberType, setMemberType] = useState('');
