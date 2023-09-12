@@ -6,10 +6,12 @@ import { Button, Modal } from "react-bootstrap";
 import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router";
 
+
+
 export const Login = () => {
   const dispatch = useDispatch();
   const { load, token, users } = useSelector((state) => state.users);
-  console.log(users);
+  //console.log(users);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -28,32 +30,42 @@ export const Login = () => {
     }
 
     await dispatch(loginThunk({ username, password })).then((req) => {
-      console.log(req.type);
-      console.log(req);
+      //console.log(req.type);
+      //console.log(req);
       if (req.type === "/login/rejected") {
         setShow(true);
-        console.log("123456");
+        //console.log("123456");
       }
       // console.log(req.payload.token);
 
       const decoded = jwtDecode(req.payload.token);
-      console.log(decoded);
-      console.log(decoded.role);
+      //console.log(decoded);
+      //console.log(decoded.role);
       if (decoded.role === 1 || decoded.role === 2) {
-        window.location.replace(`/modules`);
+        //window.location.replace(`/modules`);
+        navManagementSystem()
       } else if (decoded.role === 3) {
-        window.location.replace(`/usermodule`);
+        //window.location.replace(`/usermodule`);
+        navUsermodule()
       }
     });
-    console.log(token);
-    console.log(load);
+    //console.log(token);
+    //console.log(load);
   };
   const handleClose = () => setShow(false);
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const navForget = () => {
     navigate("/forget");
   };
+
+  const navUsermodule = () => {
+    navigate("/usermodule");
+  };
+
+  const navManagementSystem = ()=>{
+    navigate('/modules');
+  }
 
   return (
     <>
@@ -87,7 +99,7 @@ export const Login = () => {
           </form>
           <button
             className={`${styles.buttonClass} mt-3`}
-            onClick={handleClick}
+            onClick={navForget}
             type="submit"
           >
             Forgot Password

@@ -2,7 +2,7 @@
 # Parking Lot Management System
 Team name: Victory Eight    
 
-Team Member: Hainan Wang, ShouTzu Han, Mingjia Gong, Shanghua Yang, Xiangyu Hu, Zhuoran Xu, Yibo Bao, Tiancheng Shi   
+Team Member:  ShouTzu Han, Mingjia Gong, Shanghua Yang, Xiangyu Hu,Hainan Wang, Zhuoran Xu, Yibo Bao, Tiancheng Shi   
 
 This is a full-stack web application that provides a parking lot management system. The frontend is built using ReactJS and is deployed on Firebase. The backend is built using Spring Boot and the database is built using MySQL. Both the backend and database are deployed on Railway. The system allows users to book parking spaces, view their parking history, and pay for their bookings. The application has two types of users, namely User and Admin.
 
@@ -41,13 +41,14 @@ This is a full-stack web application that provides a parking lot management syst
 - ReactJS
 - Redux
 - Axios
+- Bootstrap
 - Tailwind CSS
 - Spring Boot
 - MySQL
 - JUnit
 - Jest
 - Postman
-- Firebase
+- netlify
 - Railway
 
 ## Getting Started
