@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./modules.module.css";
+import {useNavigate} from "react-router";
 
 export const UserModule = () => {
   const data = [
@@ -22,6 +23,7 @@ export const UserModule = () => {
       cover: "premium.png",
     },
   ];
+  const navigate = useNavigate()
 
 
   return (
@@ -40,7 +42,8 @@ export const UserModule = () => {
                   <div className={styles.block}>
                     <button
                       onClick={() => {
-                        window.location.replace(`/usermodule/${value.page}`);
+                        //window.location.replace(`/usermodule/${value.page}`);
+                        navigate(`/usermodule/${value.page}`)
                       }}
                       className={styles.buttonClass}
                     >

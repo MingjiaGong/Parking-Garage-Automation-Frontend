@@ -9,7 +9,6 @@ const NavBar = () =>{
     let users = localStorage.getItem('userObject') != null? JSON.parse(localStorage.getItem('userObject')):[]
 
     const navigate = useNavigate()
-
     const navHome = ()=>{
         navigate('/');
     }

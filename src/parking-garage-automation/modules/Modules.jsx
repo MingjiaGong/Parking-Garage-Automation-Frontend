@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import styles from "./modules.module.css";
 import { garageDataManagementThunk } from "../../services/garageDataManagementThunk";
 import { useDispatch, useSelector } from "react-redux";
+import {useNavigate} from "react-router";
 
 export const Modules = () => {
   const { history } = useSelector((state) => state.garageData);
   const dispatch = useDispatch();
-
 
   const data = [
     {
@@ -46,8 +46,11 @@ export const Modules = () => {
       cover: "membership.png",
     },
   ];
+
+  const navigate = useNavigate()
+
   useEffect(() => {
-    console.log("Fetching history...");
+    //console.log("Fetching history...");
     dispatch(garageDataManagementThunk());
 
   }, [dispatch]);
@@ -75,7 +78,8 @@ export const Modules = () => {
                   <div className={styles.block}>
                     <button
                       onClick={() => {
-                        window.location.replace(`/modules/${value.page}`);
+                        //window.location.replace(`/modules/${value.page}`);
+                        navigate(`/modules/${value.page}`);
                       }}
                       className={styles.buttonClass}
                     >

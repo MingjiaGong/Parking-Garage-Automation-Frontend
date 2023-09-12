@@ -1,9 +1,10 @@
 import React from "react";
 import { UserModule } from "./UserModule";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 
 export const UserModuleComponent = () => {
-  const { users } = useSelector((state) => state.users);
+  let users = localStorage.getItem('userObject') != null? JSON.parse(localStorage.getItem('userObject')):[]
+  //const { users } = useSelector((state) => state.users);
 
   return (
     <>
