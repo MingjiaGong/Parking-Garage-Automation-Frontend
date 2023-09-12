@@ -2,11 +2,7 @@ import { Button, Table, Pagination, Spinner } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import styles from "./garage-data.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getHistoryByPlateThunk,
-  getHistoryThunk,
-  getSelectedHistoryThunk,
-} from "../../services/parkHistoryThunk";
+import {getHistoryByPlateThunk, getHistoryThunk, getSelectedHistoryThunk} from "../../services/parkHistoryThunk";
 import Posts from "./Item";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";

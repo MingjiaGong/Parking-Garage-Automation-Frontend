@@ -1,11 +1,12 @@
 import NavBar from "./navBar";
-import {useSelector} from "react-redux";
+//import {useSelector} from "react-redux";
 import React, {useEffect, useState} from "react";
 import {Button, Modal} from "react-bootstrap";
 
 const NavBarComponent = () => {
-    const {users} = useSelector((state) => state.users);
-
+    //const {users} = useSelector((state) => state.users);
+    let users = localStorage.getItem('userObject') != null? JSON.parse(localStorage.getItem('userObject')):[]
+    //console.log(users)
     const logOutHandler = () => {
         localStorage.removeItem('userObject');
         TimeOutHandlerShow();

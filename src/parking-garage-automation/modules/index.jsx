@@ -1,10 +1,10 @@
 import React from "react";
 import { Modules } from "./Modules";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 
 export const ModulesComponent = () => {
-  const { users } = useSelector((state) => state.users);
-
+  //const { users } = useSelector((state) => state.users);
+  let users = localStorage.getItem('userObject') != null? JSON.parse(localStorage.getItem('userObject')):[]
   return (
     <>
       {(users.role === 1 || users.role === 2) && <Modules />}

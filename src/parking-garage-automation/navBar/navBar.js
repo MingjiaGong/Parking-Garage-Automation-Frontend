@@ -1,11 +1,12 @@
 import {Container, Navbar, Nav, Button, Modal} from "react-bootstrap";
 import styles from './navBar.module.css'
 import {useNavigate} from "react-router";
-import {useSelector} from "react-redux";
+//import {useSelector} from "react-redux";
 import React, {useState} from "react";
 
 const NavBar = () =>{
-    const { users } = useSelector((state) => state.users);
+//    const { users } = useSelector((state) => state.users);
+    let users = localStorage.getItem('userObject') != null? JSON.parse(localStorage.getItem('userObject')):[]
 
     const navigate = useNavigate()
 
