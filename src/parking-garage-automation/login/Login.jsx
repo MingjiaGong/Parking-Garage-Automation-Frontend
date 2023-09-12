@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./login.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { loginThunk } from "../../services/loginThunk";
 import { Button, Modal } from "react-bootstrap";
 import jwtDecode from "jwt-decode";
